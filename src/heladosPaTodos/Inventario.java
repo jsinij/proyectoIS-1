@@ -290,7 +290,12 @@ public class Inventario {
     
     public void realizarApertura() {
     	
-    	
+    	Iterator<Producto> iterador = this.aperturaProgramada.iterator();
+    	while(iterador.hasNext()) {
+    		Producto producto = iterador.next();
+    		iterador.remove();
+    		this.abierto.add(producto);
+    	}
     }
     
     

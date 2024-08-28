@@ -1,6 +1,6 @@
 package heladosPaTodos;
 import java.util.ArrayList;
-
+import java.util.Iterator;
 /**
  * La clase inventario representa el sistema de almacenamiento de
  * información de la heladería Helados Pa'todos.
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 
 public class Inventario {
 
-    private Usuario administrador;
+    private ArrayList<Producto> usuario = new ArrayList<>();
     private ArrayList<Producto> aperturaProgramada = new ArrayList<>();
     private ArrayList<Producto> abierto = new ArrayList<>();
     private ArrayList<Producto> vendido = new ArrayList<>();
@@ -21,7 +21,6 @@ public class Inventario {
 
     
     public Inventario(Usuario administrador) {
-        this.administrador = administrador;
         this.chocolate_10 = new Queue();
         this.chocolate_5 = new Queue();
         this.vainilla_10 = new Queue();
@@ -52,14 +51,114 @@ public class Inventario {
         return abierto;
     }
 
-   
-
     public ArrayList<Producto> getVendidos() {
         return vendido;
     }
+    
+    
 
     
-    public void mostrarInventario() {
+    public ArrayList<Producto> getUsuario() {
+		return usuario;
+	}
+
+
+	public void setUsuario(ArrayList<Producto> usuario) {
+		this.usuario = usuario;
+	}
+
+
+	public ArrayList<Producto> getAperturaProgramada() {
+		return aperturaProgramada;
+	}
+
+
+	public void setAperturaProgramada(ArrayList<Producto> aperturaProgramada) {
+		this.aperturaProgramada = aperturaProgramada;
+	}
+
+
+	public ArrayList<Producto> getAbierto() {
+		return abierto;
+	}
+
+
+	public void setAbierto(ArrayList<Producto> abierto) {
+		this.abierto = abierto;
+	}
+
+
+	public ArrayList<Producto> getVendido() {
+		return vendido;
+	}
+
+
+	public void setVendido(ArrayList<Producto> vendido) {
+		this.vendido = vendido;
+	}
+
+
+	public Queue getChocolate_10() {
+		return chocolate_10;
+	}
+
+
+	public void setChocolate_10(Queue chocolate_10) {
+		this.chocolate_10 = chocolate_10;
+	}
+
+
+	public Queue getChocolate_5() {
+		return chocolate_5;
+	}
+
+
+	public void setChocolate_5(Queue chocolate_5) {
+		this.chocolate_5 = chocolate_5;
+	}
+
+
+	public Queue getVainilla_10() {
+		return vainilla_10;
+	}
+
+
+	public void setVainilla_10(Queue vainilla_10) {
+		this.vainilla_10 = vainilla_10;
+	}
+
+
+	public Queue getVainilla_5() {
+		return vainilla_5;
+	}
+
+
+	public void setVainilla_5(Queue vainilla_5) {
+		this.vainilla_5 = vainilla_5;
+	}
+
+
+	public Queue getFresa_10() {
+		return fresa_10;
+	}
+
+
+	public void setFresa_10(Queue fresa_10) {
+		this.fresa_10 = fresa_10;
+	}
+
+
+	public Queue getFresa_5() {
+		return fresa_5;
+	}
+
+
+	public void setFresa_5(Queue fresa_5) {
+		this.fresa_5 = fresa_5;
+	}
+
+
+	public void mostrarInventario() {
         System.out.println("Productos por abrir: " + aperturaProgramada.size());
         System.out.println("Abiertos: " + abierto.size());
         System.out.println("Vendidos: " + vendido.size());
@@ -142,4 +241,57 @@ public class Inventario {
     		}
     	}
     }
+    
+    public void venderProducto(String sabor, String presentacion) {
+    	String s = sabor.toLowerCase();
+    	if (s.equals("chocolate")) {
+    		if (presentacion.equals("10")) {
+    			this.vendido.add(this.chocolate_10.dequeue());
+    		} else if (presentacion.equals("5")) {
+    			this.vendido.add(this.chocolate_5.dequeue());
+    		}
+    	} else if (s.equals("fresa")) {
+    		if (presentacion.equals("10")) {
+    			this.vendido.add(this.fresa_10.dequeue());
+    		} else if (presentacion.equals("5")) {
+    			this.vendido.add(this.fresa_5.dequeue());
+    		}
+    	} else if(s.equals("vainilla")) {
+    		if (presentacion.equals("10")) {
+    			this.vendido.add(this.vainilla_10.dequeue());
+    		} else if (presentacion.equals("5")) {
+    			this.vendido.add(this.vainilla_5.dequeue());
+    		}
+    	}
+    }
+    
+    public void abrirProducto(String sabor, String presentacion) {
+    	String s = sabor.toLowerCase();
+    	if (s.equals("chocolate")) {
+    		if (presentacion.equals("10")) {
+    			this.abierto.add(this.chocolate_10.dequeue());
+    		} else if (presentacion.equals("5")) {
+    			this.abierto.add(this.chocolate_5.dequeue());
+    		}
+    	} else if (s.equals("fresa")) {
+    		if (presentacion.equals("10")) {
+    			this.abierto.add(this.fresa_10.dequeue());
+    		} else if (presentacion.equals("5")) {
+    			this.abierto.add(this.fresa_5.dequeue());
+    		}
+    	} else if(s.equals("vainilla")) {
+    		if (presentacion.equals("10")) {
+    			this.abierto.add(this.vainilla_10.dequeue());
+    		} else if (presentacion.equals("5")) {
+    			this.abierto.add(this.vainilla_5.dequeue());
+    		}
+    	}
+    }
+    
+    public void realizarApertura() {
+    	
+    	
+    }
+    
+    
 }

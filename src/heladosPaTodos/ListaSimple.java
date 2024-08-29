@@ -126,6 +126,15 @@ public class ListaSimple {
 		
 	}
 	
+	public void mostrarObjeto() {
+		
+		NodoSimple temp = this.head;
+		while(temp.getNext() != null) {
+			System.out.println(temp.getData());
+			temp = temp.getNext();
+		}
+	}
+	
 	
 
 	

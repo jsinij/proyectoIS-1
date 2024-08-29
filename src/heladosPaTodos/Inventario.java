@@ -298,5 +298,11 @@ public class Inventario {
     	}
     }
     
+    public void mostrarDisponible(String sabor) {
+    	
+    	
+    	
+    }
+    
     
 }

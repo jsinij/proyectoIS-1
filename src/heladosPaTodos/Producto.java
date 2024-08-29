@@ -13,6 +13,8 @@ public class Producto {
     private String presentacion;
     private String fechaApertura;
     private String fechaVenta;
+    private static int id;
+    private int identificador = 0;
     
 
     public Producto(String sabor, String presentacion, String marca, int sku) {
@@ -22,11 +24,21 @@ public class Producto {
         this.fechaIngreso = LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
         this.sku = sku;
         this.fechaApertura = "NO ABIERTO";
-        this.fechaVenta = "NO VENDIDO";		
+        this.fechaVenta = "NO VENDIDO";	
+        this.identificador = id;
+        asignarId();
         //this.setEstado("disponible");
        
     }
-
+    
+    public static void asignarId() {
+    	if (id == 100){
+    		id = 0;
+    	}
+    	else {
+    		id += 1;
+    	}
+    }
 
     public String getSabor() {
         return sabor;
@@ -119,16 +131,43 @@ public class Producto {
 	public void setFechaVenta(String fechaVenta) {
 		this.fechaVenta = fechaVenta;
 	}
+	
+	public void abrir() { 
+		this.fechaApertura = LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+	}
+	public void vender() {
+		this.fechaVenta = LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+	}
+	
+	
 
+
+	public static int getId() {
+		return id;
+	}
+
+	public static void setId(int id) {
+		Producto.id = id;
+	}
+
+	public int getIdentificador() {
+		return identificador;
+	}
+
+	public void setIdentificador(int identificador) {
+		this.identificador = identificador;
+	}
 
 	@Override
 	public String toString() {
 		return 	"||||||||||||||||||||||||" + "\n" +
 				"Caja de " + this.getSabor() + "\n" +
-				"Presentación " + this.getPresentacion() + "litros" + "\n" +
-				"Fecha de ingreso " + this.getFechaIngreso() + "\n" +
-				"Fecha de venta " + this.getFechaVenta() + "\n" +
-				"Fecha de apertura " + this.getFechaApertura() + "\n" +
+				"Marca: " + this.getMarca() + "\n" +
+				"Presentación: " + this.getPresentacion() + " litros" + "\n" +
+				"Fecha de ingreso: " + this.getFechaIngreso() + "\n" +
+				"Fecha de venta: " + this.getFechaVenta() + "\n" +
+				"Fecha de apertura: " + this.getFechaApertura() + "\n" +
+				"IDENTIFICADOR: " + this.getIdentificador() + "\n" +
 				"||||||||||||||||||||||||" + "\n";
  	}
 	

@@ -302,7 +302,24 @@ public class Inventario {
     	}
     }
     
-    public void mostrarDisponible(String sabor) {
+    public void mostrarDisponible(String sabor, int presentacion) {
+    	String s = sabor.toLowerCase();
+    	switch(s) {
+    	case "chocolate":
+    		switch(presentacion) {
+    		case 10:
+    			if (!this.getChocolate_10().isEmpty()) {
+    				this.getChocolate_10().getData().mostrarObjeto();
+    			}
+    			else {
+    				System.out.println("Producto agotado");
+    			}
+    		}
+    		
+    		
+    		
+    		
+    	}
     	
     	
     	

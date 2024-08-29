@@ -33,4 +33,14 @@ public class Queue {
 		return data.first().getData();
 	}
 
+	public ListaSimple getData() {
+		return data;
+	}
+
+	public void setData(ListaSimple data) {
+		this.data = data;
+	}
+	
+	
+
 }

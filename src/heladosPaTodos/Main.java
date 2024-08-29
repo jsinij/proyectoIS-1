@@ -52,7 +52,10 @@ public class Main {
             System.out.println("4. Programar apertura de productos");
             System.out.println("5. Registrar producto");
             System.out.println("6. Mostrar SKU");
-            System.out.println("7. Salir");
+            System.out.println("7. Mostrar apertura programada");
+            System.out.println("8. Mostrar productos abiertos");
+            System.out.println("9. Mostrar productos vendidos");
+            System.out.println("10. Salir");
             System.out.print("Seleccione una opción: ");
            
             opcion = scanner.nextByte();
@@ -78,6 +81,15 @@ public class Main {
                 	 inventario.mostrarSku();
                 	 break;
                 case 7:
+                	 inventario.mostrarApertura();
+                	 break;
+                case 8:
+                	inventario.mostrarAbierto();
+                	break;
+                case 9:
+                	inventario.mostrarVendido();
+                	break;
+                case 10:
                     opcion = 0;
                     System.out.println("Saliendo del sistema...");
                     break;

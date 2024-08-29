@@ -31,6 +31,24 @@ public class Inventario {
         this.fresa_10 = new Queue();
         this.fresa_5 = new Queue();
     }
+    
+    public void mostrarApertura() {
+    	for (int i = 0; i < this.getAperturaProgramada().size(); i++) {
+    		System.out.println(this.getAperturaProgramada().get(i));
+    	}
+    }
+    
+    public void mostrarAbierto() {
+    	for (int i = 0; i < this.getAbierto().size(); i++) {
+    		System.out.println(this.getAbierto().get(i));
+    	}
+    }
+    
+    public void mostrarVendido() {
+    	for (int i = 0; i < this.getVendido().size(); i++) {
+    		System.out.println(this.getVendido().get(i));
+    	}
+    }
 
     
    
@@ -173,52 +191,64 @@ public class Inventario {
     	
     	if ( 101 == sku) {
     		Producto producto = new Producto("chocolate", "10", "CremHelado", sku);
-    		this.chocolate_10.enqueue(producto);	
+    		this.chocolate_10.enqueue(producto);
     		System.out.println("Producto registrado");
+    		System.out.println("Identificador: " + producto.getIdentificador());
     	} else if (102 == sku) {
     		Producto producto = new Producto("chocolate", "5", "CremHelado", sku);
     		this.chocolate_5.enqueue(producto);
     		System.out.println("Producto registrado");
+    		System.out.println("Identificador: " + producto.getIdentificador());
     	} else if(103 == sku) {
     		Producto producto = new Producto("chocolate", "10", "Colombina", sku);
     		this.chocolate_10.enqueue(producto);
     		System.out.println("Producto registrado");
+    		System.out.println("Identificador: " + producto.getIdentificador());
     	} else if(104 == sku) {
     		Producto producto = new Producto("chocolate", "5", "Colombina", sku);
     		this.chocolate_5.enqueue(producto);
     		System.out.println("Producto registrado");
+    		System.out.println("Identificador: " + producto.getIdentificador());
     	} else if(105 == sku) {
     		Producto producto = new Producto("vainilla", "10", "CremHelado", sku);
     		this.vainilla_10.enqueue(producto);
     		System.out.println("Producto registrado");
+    		System.out.println("Identificador: " + producto.getIdentificador());
     	} else if(106 == sku) {
     		Producto producto = new Producto("vainilla", "5", "CremHelado", sku);
     		this.vainilla_5.enqueue(producto);
     		System.out.println("Producto registrado");
+    		System.out.println("Identificador: " + producto.getIdentificador());
     	} else if(107 == sku) {
     		Producto producto = new Producto("vainilla", "10", "Colombina", sku);
     		this.vainilla_10.enqueue(producto);
     		System.out.println("Producto registrado");
+    		System.out.println("Identificador: " + producto.getIdentificador());
     	} else if(108 == sku) {
     		Producto producto = new Producto("vainilla", "5", "Colombina", sku);
     		this.vainilla_5.enqueue(producto);
     		System.out.println("Producto registrado");
+    		System.out.println("Identificador: " + producto.getIdentificador());
     	} else if(109 == sku) {
     		Producto producto = new Producto("fresa", "10", "CremHelado", sku);
     		this.fresa_10.enqueue(producto);
     		System.out.println("Producto registrado");
+    		System.out.println("Identificador: " + producto.getIdentificador());
     	} else if(110 == sku) {
     		Producto producto = new Producto("fresa", "5", "CremHelado", sku);
     		this.fresa_5.enqueue(producto);
     		System.out.println("Producto registrado");
+    		System.out.println("Identificador: " + producto.getIdentificador());
     	} else if(111 == sku) {
     		Producto producto = new Producto("fresa", "10", "Colombina", sku);
     		this.fresa_10.enqueue(producto);
     		System.out.println("Producto registrado");
+    		System.out.println("Identificador: " + producto.getIdentificador());
     	} else if(112 == sku) {
     		Producto producto = new Producto("fresa", "5", "Colombina", sku);
     		this.fresa_5.enqueue(producto);
     		System.out.println("Producto registrado");
+    		System.out.println("Identificador: " + producto.getIdentificador());
     	} else {
     		System.out.println("Codigo sku ingresado no existente");
     	}
@@ -229,26 +259,25 @@ public class Inventario {
     
     public void programarApertura() {
     	Scanner scanner = new Scanner(System.in);
-    	System.out.println("Ingrese sabor de helado (chocolate, vainilla o fresa");
-    	String s = scanner.nextLine().toLowerCase();
-    	System.out.println("Ingrese la presentación 10 o  5 lts");
-    	String presentacion = scanner.nextLine().toLowerCase();
-    	if (s.equals("chocolate")) {
-    		if (presentacion.equals("10")) {
+    	System.out.println("Ingrese el sku del producto a programar para el día siguiente");
+    	System.out.println("(101 a 112");
+    	int sku = scanner.nextInt();
+    	if (sku == 101 || sku == 103 || sku == 102 || sku == 104) {
+    		if (sku == 101 || sku == 103) {
     			this.aperturaProgramada.add(this.chocolate_10.dequeue());
-    		} else if (presentacion.equals("5")) {
+    		} else if (sku == 102 || sku == 104) {
     			this.aperturaProgramada.add(this.chocolate_5.dequeue());
     		}
-    	} else if (s.equals("fresa")) {
-    		if (presentacion.equals("10")) {
+    	} else if (sku == 109 || sku == 110 || sku == 111 || sku == 112 ) {
+    		if (sku == 109 || sku == 111) {
     			this.aperturaProgramada.add(this.fresa_10.dequeue());
-    		} else if (presentacion.equals("5")) {
+    		} else if (sku == 110 || sku == 112) {
     			this.aperturaProgramada.add(this.fresa_5.dequeue());
     		}
-    	} else if(s.equals("vainilla")) {
-    		if (presentacion.equals("10")) {
+    	} else if(sku == 105 || sku == 106 || sku == 107 || sku == 108) {
+    		if (sku == 105 || sku == 107) {
     			this.aperturaProgramada.add(this.vainilla_10.dequeue());
-    		} else if (presentacion.equals("5")) {
+    		} else if (sku == 106 || sku == 108) {
     			this.aperturaProgramada.add(this.vainilla_5.dequeue());
     		}
     	}
@@ -257,18 +286,17 @@ public class Inventario {
     
     public void venderProducto() {
     	Scanner scanner = new Scanner(System.in);
-    	System.out.println("Ingrese el sabor de helado (chocolate, vainilla o fresa");
-    	String s = scanner.nextLine().toLowerCase();
-    	System.out.println("Ingrese la presentación 10 o 5 lts");
-    	String presentacion = scanner.nextLine().toLowerCase();
-    	if (s.equals("chocolate")) {
-    		if (presentacion.equals("10")) {
+    	System.out.println("Ingre el sku del producto a vender");
+    	System.out.println("101 a 112");
+    	int sku = scanner.nextInt();
+    	if (sku == 101 || sku == 102 || sku == 103 || sku == 104) {
+    		if (sku == 101 || sku == 103) {
     			Producto temp = this.chocolate_10.dequeue();
     			temp.vender();
     			this.vendido.add(temp);
     			System.out.println("Producto vendido:");
     			System.out.println(temp);
-    		} else if (presentacion.equals("5")) {
+    		} else if (sku == 102 || sku == 104) {
     			Producto temp = this.chocolate_5.dequeue();
     			temp.vender();
     			this.vendido.add(temp);
@@ -277,14 +305,14 @@ public class Inventario {
     		} else {
     			System.out.println("Presentación no existente");
     		}
-    	} else if (s.equals("fresa")) {
-    		if (presentacion.equals("10")) {
+    	} else if (sku == 105 || sku == 106 || sku == 107 || sku == 108) {
+    		if (sku == 105 || sku == 107) {
     			Producto temp = this.fresa_10.dequeue();
     			temp.vender();
     			this.vendido.add(temp);
     			System.out.println("Producto vendido:");
     			System.out.println(temp);
-    		} else if (presentacion.equals("5")) {
+    		} else if (sku == 106 || sku == 108) {
     			Producto temp = this.fresa_5.dequeue();
     			temp.vender();
     			this.vendido.add(temp);
@@ -293,14 +321,14 @@ public class Inventario {
     		} else {
     			System.out.println("Presentación no existente");
     		}
-    	} else if(s.equals("vainilla")) {
-    		if (presentacion.equals("10")) {
+    	} else if(sku == 109 || sku == 110 || sku == 111 || sku == 112) {
+    		if (sku == 109 || sku == 111) {
     			Producto temp = this.vainilla_10.dequeue();
     			temp.vender();
     			this.vendido.add(temp);
     			System.out.println("Producto vendido:");
     			System.out.println(temp);
-    		} else if (presentacion.equals("5")) {
+    		} else if (sku == 110 || sku == 112) {
     			Producto temp = this.vainilla_5.dequeue();
     			temp.vender();
     			this.vendido.add(temp);
@@ -318,46 +346,45 @@ public class Inventario {
     
     public void abrirProducto() {
     	Scanner scanner = new Scanner(System.in);
-    	System.out.println("Ingrese el sabor de helado (Chocolate, vainilla o fresa)");
-    	String s = scanner.nextLine().toLowerCase();
-    	System.out.println("Ingrese la presentación 10 o 5 lts");
-    	String presentacion = scanner.nextLine().toLowerCase();
-    	if (s.equals("chocolate")) {
-    		if (presentacion.equals("10")) {
+    	System.out.println("Ingrese el sku del producto a abrir");
+    	System.out.println("101 a 112");
+    	int sku = scanner.nextInt();
+    	if (sku == 101 || sku == 102 || sku == 103 || sku == 104) {
+    		if (sku == 101 || sku == 103) {
     			Producto temp = this.chocolate_10.dequeue();
     			temp.abrir();
     			this.abierto.add(temp);
     			System.out.println("Producto abierto:");
     			System.out.println(temp);
-    		} else if (presentacion.equals("5")) {
+    		} else if (sku == 102 || sku == 104) {
     			Producto temp = this.chocolate_5.dequeue();
     			temp.abrir();
     			this.abierto.add(temp);
     			System.out.println("Producto abierto:");
     			System.out.println(temp);
     		}
-    	} else if (s.equals("fresa")) {
-    		if (presentacion.equals("10")) {
+    	} else if (sku == 105 || sku == 106 || sku == 107 || sku == 108) {
+    		if (sku == 105 || sku == 107) {
     			Producto temp = this.fresa_10.dequeue();
     			temp.abrir();
     			this.abierto.add(temp);
     			System.out.println("Producto abierto:");
     			System.out.println(temp);
-    		} else if (presentacion.equals("5")) {
+    		} else if (sku == 106 || sku == 108) {
     			Producto temp = this.fresa_5.dequeue();
     			temp.abrir();
     			this.abierto.add(temp);
     			System.out.println("Producto abierto:");
     			System.out.println(temp);
     		}
-    	} else if(s.equals("vainilla")) {
-    		if (presentacion.equals("10")) {
+    	} else if(sku == 109 || sku == 110 || sku == 111 || sku == 112) {
+    		if (sku == 109 || sku == 111) {
     			Producto temp = this.vainilla_10.dequeue();
     			temp.abrir();
     			this.abierto.add(temp);
     			System.out.println("Producto abierto:");
     			System.out.println(temp);
-    		} else if (presentacion.equals("5")) {
+    		} else if (sku == 110 || sku == 112) {
     			Producto temp = this.vainilla_5.dequeue();
     			temp.abrir();
     			this.abierto.add(temp);
@@ -399,7 +426,7 @@ public class Inventario {
         		switch(presentacion) {
         		case "10":
         			if (!this.getChocolate_10().isEmpty()) {
-        				System.out.println("Cajas de chocolate 10 lts" + this.getChocolate_10().size());
+        				System.out.println("Cajas de chocolate 10 lts: " + this.getChocolate_10().size());
         			}
         			else {
         				System.out.println("Producto agotado");
@@ -407,7 +434,7 @@ public class Inventario {
         			break;
         		case "5":
         			if (!this.getChocolate_5().isEmpty()) {
-        				System.out.println("Cajas de chocolate 5 lts" + this.getChocolate_5().size());
+        				System.out.println("Cajas de chocolate 5 lts: " + this.getChocolate_5().size());
         			}
         			else {
         				System.out.println("Producto agotado");

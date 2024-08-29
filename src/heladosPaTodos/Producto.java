@@ -14,7 +14,7 @@ public class Producto {
     private String fechaApertura;
     private String fechaVenta;
     private static int id;
-    private int identificador = 0;
+    private int identificador = 1;
     
 
     public Producto(String sabor, String presentacion, String marca, int sku) {
@@ -33,7 +33,7 @@ public class Producto {
     
     public static void asignarId() {
     	if (id == 100){
-    		id = 0;
+    		id = 1;
     	}
     	else {
     		id += 1;

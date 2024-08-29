@@ -1,4 +1,6 @@
 package heladosPaTodos;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Iterator;
 /**
@@ -32,6 +34,7 @@ public class Inventario {
     
     public void abrirProducto(Producto producto) {
         aperturaProgramada.remove(producto);
+        producto.setFechaApertura(LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
         abierto.add(producto);
     }
 
@@ -41,6 +44,7 @@ public class Inventario {
 
     public void venderProducto(Producto producto) {
        vendido.add(producto);
+       producto.setFechaVenta(LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy")));
     }
 
     public ArrayList<Producto> getAperturasProgramadas() {

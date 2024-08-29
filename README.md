@@ -1,5 +1,5 @@
 # Protitipo Version: Entrega 2
-// Integrantes:
+Integrantes : 
 - Ana Sofia Gomez Zapata
 - Isabella Osorio Perez
 - Valentina Rodriguez Henao

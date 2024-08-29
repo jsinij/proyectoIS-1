@@ -206,13 +206,13 @@ public class Inventario {
     	} else if(109 == sku) {
     		Producto producto = new Producto("fresa", "10", "CremHelado", sku);
     		this.fresa_10.enqueue(producto);
-    	} else if(109 == sku) {
+    	} else if(110 == sku) {
     		Producto producto = new Producto("fresa", "5", "CremHelado", sku);
     		this.fresa_5.enqueue(producto);
-    	} else if(109 == sku) {
+    	} else if(111 == sku) {
     		Producto producto = new Producto("fresa", "10", "Colombina", sku);
     		this.fresa_10.enqueue(producto);
-    	} else if(109 == sku) {
+    	} else if(112 == sku) {
     		Producto producto = new Producto("fresa", "5", "Colombina", sku);
     		this.fresa_5.enqueue(producto);
     	} else {
@@ -302,23 +302,140 @@ public class Inventario {
     	}
     }
     
-    public void mostrarDisponible(String sabor, int presentacion) {
+    public void mostrarDisponible(String sabor, String presentacionn) {
     	String s = sabor.toLowerCase();
+    	String presentacion = presentacionn.toLowerCase();
     	switch(s) {
     	case "chocolate":
     		switch(presentacion) {
-    		case 10:
+    		case "10":
     			if (!this.getChocolate_10().isEmpty()) {
     				this.getChocolate_10().getData().mostrarObjeto();
     			}
     			else {
     				System.out.println("Producto agotado");
     			}
+    			break;
+    		case "5":
+    			if (!this.getChocolate_5().isEmpty()) {
+    				this.getChocolate_5().getData().mostrarObjeto();
+    			}
+    			else {
+    				System.out.println("Producto agotado");
+    			}
+    			break;
+    		case "todos":
+    			if (!this.getChocolate_10().isEmpty() && !this.getChocolate_5().isEmpty()) {
+    				System.out.println("Presentación de 10 lts");
+    				this.getChocolate_10().getData().mostrarObjeto();
+    				System.out.println("Presentación de 5 lts");
+    				this.getChocolate_5().getData().mostrarObjeto();
+    			}
+    			else {
+    				if(!this.getChocolate_10().isEmpty()) {
+    					System.out.println("Solo presentación de 10 lts disponible");
+    					this.getChocolate_10().getData().mostrarObjeto();
+    				}
+    				else if(!this.getChocolate_5().isEmpty()) {
+    					System.out.println("Solo presentación de 5 lts disponible");
+    					this.getChocolate_5().getData().mostrarObjeto();
+    				}
+    				else {
+    					System.out.println("Ninguna presentación disponible");
+    				}
+    			}
+    			
+    		default:
+    			System.out.println("Presentación no existente");
+    		}
+    	case "fresa":
+    		
+    		switch(presentacion) {
+    		case "10":
+    			if (!this.getFresa_10().isEmpty()) {
+    				this.getFresa_10().getData().mostrarObjeto();
+    			}
+    			else {
+    				System.out.println("Producto agotado");
+    			}
+    			break;
+    		case "5":
+    			if (!this.getFresa_5().isEmpty()) {
+    				this.getFresa_5().getData().mostrarObjeto();
+    			}
+    			else {
+    				System.out.println("Producto agotado");
+    			}
+    			break;
+    		case "todos":
+    			if (!this.getFresa_10().isEmpty() && !this.getFresa_5().isEmpty()) {
+    				System.out.println("Presentación de 10 lts");
+    				this.getFresa_10().getData().mostrarObjeto();
+    				System.out.println("Presentación de 5 lts");
+    				this.getFresa_5().getData().mostrarObjeto();
+    			}
+    			else {
+    				if(!this.getFresa_10().isEmpty()) {
+    					System.out.println("Solo presentación de 10 lts disponible");
+    					this.getFresa_10().getData().mostrarObjeto();
+    				}
+    				else if(!this.getFresa_5().isEmpty()) {
+    					System.out.println("Solo presentación de 5 lts disponible");
+    					this.getFresa_5().getData().mostrarObjeto();
+    				}
+    				else {
+    					System.out.println("Ninguna presentación disponible");
+    				}
+    			}
+    		default:
+    			System.out.println("Presentación no existente");
+    		
+    		}
+    	case "vainilla":
+    		switch(presentacion) {
+    		case "10":
+    			if (!this.getVainilla_10().isEmpty()) {
+    				this.getVainilla_10().getData().mostrarObjeto();
+    			}
+    			else {
+    				System.out.println("Producto agotado");
+    			}
+    			break;
+    		case "5":
+    			if (!this.getVainilla_5().isEmpty()) {
+    				this.getVainilla_5().getData().mostrarObjeto();
+    			}
+    			else {
+    				System.out.println("Producto agotado");
+    			}
+    			break;
+    		case "todos":
+    			if (!this.getVainilla_10().isEmpty() && !this.getVainilla_5().isEmpty()) {
+    				System.out.println("Presentación de 10 lts");
+    				this.getVainilla_10().getData().mostrarObjeto();
+    				System.out.println("Presentación de 5 lts");
+    				this.getVainilla_5().getData().mostrarObjeto();
+    			}
+    			else {
+    				if(!this.getVainilla_10().isEmpty()) {
+    					System.out.println("Solo presentación de 10 lts disponible");
+    					this.getVainilla_10().getData().mostrarObjeto();
+    				}
+    				else if(!this.getVainilla_5().isEmpty()) {
+    					System.out.println("Solo presentación de 5 lts disponible");
+    					this.getVainilla_5().getData().mostrarObjeto();
+    				}
+    				else {
+    					System.out.println("Ninguna presentación disponible");
+    				}
+    			}
+    		default:
+    			System.out.println("Presentación no existente");
+    		
     		}
     		
-    		
-    		
-    		
+    	default:
+    		System.out.println("Sabor no existente");
     	}
     	
     	

@@ -267,7 +267,40 @@ public class Inventario {
     		System.out.println(producto);
     	}
     }
-    
+ // FUNCIONALIDAD 6
+    public void consultarProductosConPocaExistencia() {
+        System.out.println("Consultando productos con poca existencia...");
+
+        // Listas de colas de productos según el sabor y presentación
+        Queue[] colasProductos = {chocolate_10, chocolate_5, fresa_10, fresa_5, vainilla_10, vainilla_5};
+        String[] descripciones = {"Chocolate 10 litros", "Chocolate 5 litros", "Fresa 10 litros", "Fresa 5 litros", "Vainilla 10 litros", "Vainilla 5 litros"};
+
+        // Recorremos cada cola
+        for (int i = 0; i < colasProductos.length; i++) {
+            Queue cola = colasProductos[i];
+
+            // Verificar si tiene 2 o menos productos
+            if (cola.size() <= 2) {
+                System.out.println("Pocas existencias para: " + descripciones[i] + " (" + cola.size() + " unidades restantes)");
+
+                // Recorremos la cola para mostrar los productos
+                NodoSimple nodo = cola.data.first();
+                while (nodo != null) {
+                    Producto producto = nodo.getData();
+                    
+                    // Mostrar la información relevante del producto
+                    System.out.println("Producto: " + producto.getSabor());
+                    System.out.println("Presentación: " + producto.getPresentacion() + " litros");
+                    System.out.println("SKU: " + producto.getSKU());
+                    System.out.println("Fecha de ingreso: " + producto.getFechaIngreso());
+                    System.out.println("------------------------------");
+                    
+                    nodo = nodo.getNext(); // Avanzar al siguiente producto en la cola
+                }
+            }
+        }
+    }
+
     public void mostrarDisponible() {
     	Scanner scanner = new Scanner(System.in);
     	System.out.println("Ingrese sabor");

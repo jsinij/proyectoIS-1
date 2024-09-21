@@ -133,14 +133,5 @@ public class ListaSimple {
 			System.out.println(temp.getData());
 			temp = temp.getNext();
 		}
-	}
-	
-	
-
-	
-	
-	
-	
-	
-	
+	}	
 }

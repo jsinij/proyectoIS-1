@@ -21,6 +21,7 @@ public class Inventario {
     private Queue vainilla_5;
     private Queue fresa_10;
     private Queue fresa_5;
+    
 
     
     public Inventario(Usuario administrador) {

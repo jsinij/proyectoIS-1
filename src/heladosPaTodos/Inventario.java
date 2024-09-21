@@ -23,6 +23,8 @@ public class Inventario {
     private Queue vainilla_5;
     private Queue fresa_10;
     private Queue fresa_5;
+    private Map<Integer, Integer> pedidosRealizados = new HashMap<>();
+
     
     // Tabla Hash donde almacenaremos los sku
     // Cada clave sera un sku(Int) y el valor contenido es un Producto
@@ -54,6 +56,37 @@ public class Inventario {
         
         
     }
+    
+    public void agregarPedido(int sku, int cantidad) {
+        pedidosRealizados.put(sku, cantidad);
+    }
+    public void compararPedidoConInventario() {
+        for (Map.Entry<Integer, Integer> entry : pedidosRealizados.entrySet()) {
+            int sku = entry.getKey();
+            int cantidadPedida = entry.getValue();
+            int cantidadEnInventario = obtenerCantidadEnInventario(sku);
+            
+            if (cantidadEnInventario >= cantidadPedida) {
+                System.out.println("Pedido completo para SKU " + sku);
+            } else if (cantidadEnInventario > 0) {
+                System.out.println("Pedido parcial para SKU " + sku + ": " + cantidadEnInventario + "/" + cantidadPedida);
+            } else {
+                System.out.println("Producto no recibido para SKU " + sku);
+            }
+        }
+    }
+    private int obtenerCantidadEnInventario(int sku) {
+        int cantidad = 0;
+        // Aquí se debería recorrer las colas y listas donde están los productos en el inventario
+        for (Producto producto : usuario) {
+            if (producto.getSKU() == sku) {
+                cantidad++;
+            }
+        }
+        // Repetir la lógica para otras listas o colas si es necesario
+        return cantidad;
+    }
+
     
     public void mostrarApertura() {
     	for (int i = 0; i < this.getAperturaProgramada().size(); i++) {

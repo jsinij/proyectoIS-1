@@ -16,6 +16,10 @@ public class Producto {
     private static int id;
     private int identificador = 1;
     
+    // Este atributo solo se usará con los productos base
+    // (Los que están en la tabla de sku)
+    private Queue cola;
+    
 
     public Producto(String sabor, String presentacion, String marca, int sku) {
         this.sabor = sabor;
@@ -31,6 +35,19 @@ public class Producto {
        
     }
     
+    public Producto(String sabor, String presentacion, String marca, int sku, Queue cola) {
+        this.sabor = sabor;
+        this.presentacion = presentacion;
+        this.marca = marca;
+        this.fechaIngreso = LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MM-yyyy"));
+        this.sku = sku;
+        this.fechaApertura = "NO ABIERTO";
+        this.fechaVenta = "NO VENDIDO";	
+        this.cola = cola;
+        //this.setEstado("disponible");
+       
+    }
+    
     public static void asignarId() {
     	if (id == 100){
     		id = 1;
@@ -39,8 +56,18 @@ public class Producto {
     		id += 1;
     	}
     }
+    
+    
 
-    public String getSabor() {
+    public Queue getCola() {
+		return cola;
+	}
+
+	public void setCola(Queue cola) {
+		this.cola = cola;
+	}
+
+	public String getSabor() {
         return sabor;
     }
 

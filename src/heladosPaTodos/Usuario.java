@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Usuario {
-    private String nombre;
-    private String tipo;
-    private String contraseña;
-    private String documento;
-    private List<String> permisos;
-    private List<RegistroModificaciones> registros;
+	protected String nombre;
+	protected String tipo;
+	protected String contraseña;
+	protected String documento;
+	protected List<String> permisos;
+	protected List<RegistroModificaciones> registros;
 
     public Usuario(String nombre, String tipo, String contraseña, String documento) {
         this.nombre = nombre;

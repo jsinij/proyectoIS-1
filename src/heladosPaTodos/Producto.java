@@ -47,6 +47,12 @@ public class Producto {
         //this.setEstado("disponible");
        
     }
+
+//nuevo constructor
+    public Producto(String sabor, String presentacion) {
+    	this.sabor = sabor;
+        this.presentacion = presentacion;
+    }
     
     public static void asignarId() {
     	if (id == 100){
@@ -197,6 +203,14 @@ public class Producto {
 				"IDENTIFICADOR: " + this.getIdentificador() + "\n" +
 				"||||||||||||||||||||||||" + "\n";
  	}
+
+	//nuevo formato para mostrar el producto
+	public String mostrarProducto() {
+		return "---------------------------" + "\n" + 
+				"Sabor " + this.getSabor() + 
+				" de " + this.getPresentacion() + " Lts." + "\n" +
+				"---------------------------" + "\n";
+	}
 	
 	
 }

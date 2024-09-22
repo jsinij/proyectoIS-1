@@ -90,6 +90,9 @@ public class Main {
                 	inventario.mostrarVendido();
                 	break;
                 case 10:
+                	inventario.mostrarPedidoProgramado();
+                	break;
+                case 11:
                     opcion = 0;
                     System.out.println("Saliendo del sistema...");
                     break;

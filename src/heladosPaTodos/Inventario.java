@@ -17,6 +17,7 @@ public class Inventario {
     private ArrayList<Producto> aperturaProgramada = new ArrayList<>();
     private ArrayList<Producto> abierto = new ArrayList<>();
     private ArrayList<Producto> vendido = new ArrayList<>();
+	private ArrayList<Producto> pedidoProgramado = new ArrayList<>();  //nuevo
     private Queue chocolate_10;
     private Queue chocolate_5;
     private Queue vainilla_10;
@@ -161,6 +162,15 @@ public class Inventario {
 
 	public void setVendido(ArrayList<Producto> vendido) {
 		this.vendido = vendido;
+	}
+
+	 //nuevo
+    	public ArrayList<Producto> getpedidoProgramado(){
+    		return pedidoProgramado;
+    	}
+    
+   	public void setPedidoProgramado(ArrayList<Producto> pedidoProgramado ) {
+		this.pedidoProgramado = pedidoProgramado;
 	}
 
 
@@ -637,12 +647,6 @@ public class Inventario {
     		break;
     		
     	}
-    	
-    	
-    	
-    	
-    	
-    	
     }
     
     public void mostrarSku() {
@@ -660,6 +664,43 @@ public class Inventario {
         System.out.println("111: Sabor Fresa, Colombina, 10 Litros");
         System.out.println("112: Sabor Fresa, Colombina, 5 Litros");
     }
-    
+
+	//nuevo
+	public void mostrarPedidoProgramado() {
+	    	
+	    	if (this.getChocolate_10().isEmpty()) {
+	    		Producto programado = new Producto("Chocolate", "10");
+	    		this.aperturaProgramada.add(programado);
+	    	}
+	    	
+	    	if (this.getChocolate_5().isEmpty()) {
+	    		Producto programado = new Producto("Chocolate", "5");
+	    		this.aperturaProgramada.add(programado);
+	    	}
+	    	
+	    	if(this.getVainilla_10().isEmpty()) {
+	    		Producto programado = new Producto("Vainilla", "10");
+	    		this.aperturaProgramada.add(programado);
+	    	}
+	    	
+	    	if (this.getVainilla_5().isEmpty()) {
+	    		Producto programado = new Producto("Vainilla", "5");
+	    		this.aperturaProgramada.add(programado);
+	    	}
+	    	
+	    	if (this.getFresa_10().isEmpty()) {
+	    		Producto programado = new Producto("Fresa", "10");
+	    		this.aperturaProgramada.add(programado);
+	    	}
+	    	if (this.getFresa_5().isEmpty()) {
+	    		Producto programado = new Producto("Fresa", "5");
+	    		this.aperturaProgramada.add(programado);
+	    	}
+	    	
+	    	for (Producto p : aperturaProgramada) {
+	    		System.out.println(p.mostrarProducto());
+	    	}
+	}
+	    
     
 }
